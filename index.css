@@ -1,13 +1,18 @@
-/* 기본 초기화 */
+/* ================================
+   기본 초기화
+================================ */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0 0 100px 0; /* 하단 공백 확보 */
     font-family: 'Segoe UI', 'Roboto', sans-serif;
     background-color: #f5f5f5;
+    font-size: clamp(0.9rem, 2.2vw, 1rem); /* 화면 크기에 따라 글자 크기 유동화 */
 }
 
-/* 컨테이너 중앙 정렬 */
+/* ================================
+   컨테이너 중앙 정렬
+================================ */
 .container {
     background-color: #ffffff;
     width: 90%;
@@ -21,6 +26,8 @@ html, body {
 
 .container img {
     margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
 }
 
 .container a {
@@ -29,7 +36,10 @@ html, body {
     color: #333;
     text-decoration: none;
 }
-/* 폼 스타일 */
+
+/* ================================
+   폼 스타일
+================================ */
 form {
     width: 90%;
     max-width: 800px;
@@ -45,9 +55,11 @@ form {
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
 a {
     color: red;
 }
+
 /* 섹션 제목 */
 h1.title, h1 {
     font-size: 1.3em;
@@ -68,6 +80,7 @@ label {
 /* 입력창 */
 input[type="text"],
 input[type="email"],
+input[type="tel"],
 textarea {
     width: 100%;
     padding: 10px 12px;
@@ -82,6 +95,7 @@ textarea {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
+input[type="tel"]:focus,
 textarea:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0,123,255,0.2);
@@ -108,13 +122,16 @@ button[type="submit"] {
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.2s;
+    min-height: 48px; /* 모바일 터치 영역 확보 */
 }
 
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-/* ===== 반응형 ===== */
+/* ================================
+   반응형 스타일
+================================ */
 @media (max-width: 768px) {
     .container, form {
         width: 95%;
@@ -131,6 +148,7 @@ button[type="submit"]:hover {
 
     input[type="text"],
     input[type="email"],
+    input[type="tel"],
     textarea {
         font-size: 0.9em;
         padding: 8px 10px;
@@ -142,14 +160,28 @@ button[type="submit"]:hover {
     }
 }
 
-@media (max-width: 480px) {
-    h1.title, h1 {
-        font-size: 1.1em;
+@media (max-width: 600px) {
+    .container, form {
+        width: 100%;
+        padding: 15px;
+        margin: 10px auto;
     }
 
-    input[type="text"],
-    input[type="email"],
-    textarea {
-        font-size: 0.85em;
+    h1.title, h1 {
+        font-size: 1rem;
+    }
+
+    input, textarea {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    h1.title, h1 {
+        font-size: 0.9rem;
+    }
+    button[type="submit"] {
+        font-size: 0.9rem;
+        padding: 12px;
     }
 }
