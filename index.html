@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>끼리끼리 법무부 지원</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="img/logo_22=.png" type="image/x-icon"/>
+</head>
+<body>
+    <header class="container">
+        <img src="img/logo_2.png" alt="logo" width="200px"><br>
+        <a>법무부 지원서</a>
+    </header>
+
+    <form id="customForm">
+        <div class="gichou">
+            <h1 class = "title">기초정보</h1>
+            <label>이메일</label><br>
+            <input type="email" name="emailAddress" required><br><br>
+
+            <label>개인정보 취급 동의</label><br>
+            <input type="radio" name="entry.2030554916" value="동의"> 동의
+            <input type="radio" name="entry.2030554916" value="미동의"> 미동의
+            <br><br>
+
+            <label>나이/닉네임/고유번호</label><br>
+            <input type="text" name="entry.1091900789" required><br><br>
+
+            <label>공무원 경험 및 타 팩션 경력</label><br>
+            <textarea name="entry.1222978077" rows="6" cols="60" required ></textarea><br><br>
+
+            <label>파이브엠 경력</label><br>
+            <textarea rows="6" cols="60" name="entry.115896340" required></textarea><br><br>
+
+            <label>평일, 주말 접속 가능 시간대</label><br>
+            <textarea rows="6" cols="60" name="entry.1206909085" required></textarea><br><br>
+        </div>
+
+        <div class="rp">
+            <h1>RP문제</h1>
+            <label>Role Play(RP)의 정의 및 예시 3가지 이상</label><br>
+            <textarea rows="6" cols="60" name="entry.1511275085" required></textarea><br><br>
+
+            <label>Bad-RP의 정의 및 예시 3가지 이상</label><br>
+            <textarea rows="6" cols="60" name="entry.1379801121" required></textarea><br><br>
+
+            <label>Non-RP의 정의 및 예시 3가지 이상</label><br>
+            <textarea rows="6" cols="60" name="entry.468701822" required></textarea>
+            <br><br>
+
+            <label>도주, 수배, 즉흥 알피 도중 타인의 차량으로 바꾸는것이 가능한가요?</label><br>
+            <input type="radio" name="entry.1150819931" value="가능"> 가능
+            <input type="radio" name="entry.1150819931" value="불가능"> 불가능
+            <br><br>
+
+            <label>수배알피 조건 2가지</label><br>
+            <textarea rows="6" cols="60" name="entry.1767708482" required></textarea><br><br>
+        </div>
+
+        <div class="cyousa">
+            <h1>공무직 관련 조사</h1>
+            <label>본인의 총기실력</label><br>
+            <input type="radio" name="entry.2054628121" value="상"> 상
+            <input type="radio" name="entry.2054628121" value="중"> 중
+            <input type="radio" name="entry.2054628121" value="하"> 하
+            <br><br>
+
+            <label>본인의 운전실력</label><br>
+            <input type="radio" name="entry.99697381" value="상"> 상
+            <input type="radio" name="entry.99697381" value="중"> 중
+            <input type="radio" name="entry.99697381" value="하"> 하
+            <br><br>
+
+            <label>본인의 알피이해도</label><br>
+            <input type="radio" name="entry.633637939" value="상"> 상
+            <input type="radio" name="entry.633637939" value="중"> 중
+            <input type="radio" name="entry.633637939" value="하"> 하
+            <br><br>
+            
+            <label>법무부에 지원하게된 동기</label><br>
+            <textarea rows="6" cols="60" name="entry.2097403964" required></textarea><br><br>
+
+            <label>합격시 포부</label><br>
+            <textarea rows="6" cols="60" name="entry.1074557835" required></textarea><br><br>
+        </div>
+        <button type="submit">제출</button>      
+    </form>
+
+    <script>
+        document.getElementById("customForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            fetch("https://docs.google.com/forms/d/e/1FAIpQLSe6lvTABtNL3oe315MJSAZuS2VaUQC2yteLUpcJGcg1p1zc5A/formResponse", {
+                method: "POST",
+                mode: "no-cors", // 응답은 못 받음
+                body: new URLSearchParams(formData)
+            }).then(() => {
+                alert("제출 완료!");
+                form.reset();
+            }).catch(() => {
+                alert("제출 중 오류가 발생했습니다.");
+            });
+        });
+    </script>
+</body>
+</html>
